@@ -1,24 +1,26 @@
-# README
+# TODOLIST
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Простое приложение со списком дел.
 
-Things you may want to cover:
+Особенности:
 
-* Ruby version
+* Авторизация через социальные сети;
+* Хранение данных в Mongo;
+* Интерфейс на React.
 
-* System dependencies
 
-* Configuration
+Авторизация:
 
-* Database creation
+* Данные неавторизованного пользователя сохраняются в куки;
+* При авторизации сохраняются в базу данных.
 
-* Database initialization
+Пользовательские таски:
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Состоят из:
+    1) Короткой строки,(100 символов);
+    2) Состояния(Выполнено или нет);
+    3) Даты создания и выполнения;
+    4) Подробного описания(1000 символов).
+    
+* Могут быть отсортированы по дате;
+* Позволяют пользователю модифицировать порядок.   
