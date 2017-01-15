@@ -17,6 +17,7 @@ gem "react_on_rails", "~> 6"
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.5'
+  gem 'capybara'
 end
 
 group :development do
