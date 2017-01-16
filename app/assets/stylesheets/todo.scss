@@ -1,0 +1,28 @@
+
+#list {
+  height: 500px;
+  width: 300px;
+
+  border: black solid 1px;
+
+}
+
+#new_task {
+  padding: 2px;
+  border: red solid 1px;
+}
+
+#last_tasks_page {
+  padding: 2px;
+  border: green solid 1px;
+
+  .task {
+    padding: 2px;
+    border: purple solid 1px;
+  }
+}
+
+#pagination {
+  padding: 2px;
+  border: orange solid 1px;
+}

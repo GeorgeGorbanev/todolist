@@ -10,8 +10,10 @@ gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'jbuilder', '~> 2.5'
+
 gem 'mongoid', '6.0.0'
 gem "react_on_rails", "~> 6"
+gem 'slim', '3.0.7'
 
 
 group :development, :test do
