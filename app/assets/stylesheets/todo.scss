@@ -1,28 +1,64 @@
+body {
+  background: #fafafa;
+}
+
+h1 {
+  display: block;
+  margin-left: 50%;
+  margin-right: 50%;
+}
 
 #list {
-  height: 500px;
-  width: 300px;
+  width: 550px;
+  margin-left: auto;
+  margin-right: auto;
+  background: #f1f1f1;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  input[type=text] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 6px;
+    height: 40px;
+    border: none;
+    background-color: #efefef;
+    font-size: 20px;
+    color: #666666;
+  }
+  input[type=text]:focus {
+    background-color: #f1f1f1;
+    box-shadow: 0 0 10px rgba(50,50,50,0.5);
+    border: none;
+    box-shadow: none;
+  }
+}
 
-  border: black solid 1px;
+#new-task {
 
 }
 
-#new_task {
-  padding: 2px;
-  border: red solid 1px;
-}
-
-#last_tasks_page {
-  padding: 2px;
-  border: green solid 1px;
-
+#last-tasks-page {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
   .task {
-    padding: 2px;
-    border: purple solid 1px;
+    width: auto;
+    height: auto;
+    border: solid 1px #cccccc;
+    input[type=checkbox] {
+      float: left;
+      width: 15px;
+      margin-top: 13px;
+    }
+    .text-container {
+      display: block;
+      overflow: hidden;
+      width: auto;
+    }
   }
 }
 
 #pagination {
   padding: 2px;
-  border: orange solid 1px;
 }

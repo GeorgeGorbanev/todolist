@@ -1,13 +1,26 @@
-h1 List
+h1 Todo:
 div id="list"
-  div id="new_task"
-    form
-      input type="text"
-      input type="submit"
-  div id="last_tasks_page"
-    div class="task"
-      form
-        input type="checkbox"
-        input type="text"
+  div id="new-task"
+    input type="text" placeholder="What you gonna do?"
+  div id="last-tasks-page"
+    ul 
+      li
+        div class="task"
+            input type="checkbox"
+            div class="text-container"
+              input type="text" value="something"
+        div class="task"
+            input type="checkbox"
+            div class="text-container"
+              input type="text" value="something else"
+        div class="task"
+            input type="checkbox"
+            div class="text-container" 
+              input type="text" value="something more else"
+        div class="task"
+            input type="checkbox"
+            div class="text-container"
+              input type="text" value="more something more else"              
+              
   div id="pagination"      
   
