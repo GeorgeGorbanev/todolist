@@ -1,26 +1,43 @@
-h1 Todo:
+div class="header"
+  h1 Todo:
 div id="list"
   div id="new-task"
     input type="text" placeholder="What you gonna do?"
   div id="last-tasks-page"
     ul 
       li
-        div class="task"
-            input type="checkbox"
+        div class="task done"
+            input type="checkbox" checked="true" 
             div class="text-container"
               input type="text" value="something"
-        div class="task"
-            input type="checkbox"
+              a href="#"
+                img src="/ardwn.svg" class="arrow"
+        div class="task done"
+            input type="checkbox" checked="true" 
             div class="text-container"
               input type="text" value="something else"
+              a href="#"
+                img src="/arup.svg" class="arrow"
+            div class="task-description"
+              span class="info" Created: 
+              span 17-01-2017
+              a href="#" Remove
+              br
+              span class="info" Done: 
+              span 18-01-2017
+              textarea placeholder="Describe your task..."
         div class="task"
             input type="checkbox"
             div class="text-container" 
               input type="text" value="something more else"
+              a href="#"
+                img src="/ardwn.svg" class="arrow"
         div class="task"
             input type="checkbox"
             div class="text-container"
-              input type="text" value="more something more else"              
+              input type="text" value="more something more else"
+              a href="#"
+                img src="/ardwn.svg" class="arrow"           
               
   div id="pagination"      
   

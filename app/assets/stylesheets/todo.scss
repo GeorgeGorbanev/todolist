@@ -1,18 +1,20 @@
 body {
-  background: #fafafa;
+  background: #eaeaea;
 }
 
-h1 {
-  display: block;
-  margin-left: 50%;
-  margin-right: 50%;
+.header {
+  width: 550px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "Helvetica";
 }
 
 #list {
   width: 550px;
   margin-left: auto;
   margin-right: auto;
-  background: #f1f1f1;
+  background: #f7f7f7;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
   input[type=text] {
     width: 100%;
@@ -20,12 +22,13 @@ h1 {
     padding: 6px;
     height: 40px;
     border: none;
-    background-color: #efefef;
+    background-color: inherit;
     font-size: 20px;
     color: #666666;
+    padding-right: 30px;
   }
   input[type=text]:focus {
-    background-color: #f1f1f1;
+    background-color: #fcfcfc;
     box-shadow: 0 0 10px rgba(50,50,50,0.5);
     border: none;
     box-shadow: none;
@@ -33,7 +36,9 @@ h1 {
 }
 
 #new-task {
-
+  input[type=text] {
+    background: #f7f7f7;
+  }
 }
 
 #last-tasks-page {
@@ -47,16 +52,64 @@ h1 {
     height: auto;
     border: solid 1px #cccccc;
     input[type=checkbox] {
+      zoom: 1.6;
       float: left;
-      width: 15px;
-      margin-top: 13px;
+      margin: 0;
+      padding: 0;
+      margin-top: 7px;
+      margin-left: 5px;
     }
     .text-container {
+      position: relative;
       display: block;
       overflow: hidden;
       width: auto;
+      .arrow {
+        display: none;
+        position: absolute;
+        right: 3px;
+        top: 7px;
+        height: 30px;
+        width: 30px;
+      }
+    }
+    .task-description {
+      padding:  5px 15px 5px 15px;
+      border-top: solid 1px #dddddd;
+      a {
+        color: #aa5555;
+        float: right;
+      }
+      .info {
+        color: #444444;
+      }
+      span {
+        font-family: "Helvetica";
+        font-size: 15px;
+      }
+      textarea {
+        display: block;
+        border: solid 1px #cecece;
+        border-radius: 5px;
+        margin-top: 3px;
+        width: 100%;
+      }
     }
   }
+}
+
+.done {
+  input[type=text]{
+    text-decoration: line-through;
+  }
+}
+
+.task:hover {
+  background: #fefefe;
+}
+
+#last-tasks-page .task:hover .text-container .arrow {
+  display: block;
 }
 
 #pagination {
