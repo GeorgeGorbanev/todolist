@@ -2,6 +2,13 @@ body {
   background: #eaeaea;
 }
 
+#root {
+  min-width: 230px;
+  max-width: 550px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .header {
   width: 550px;
   text-align: center;
@@ -12,8 +19,6 @@ body {
 
 #list {
   width: 550px;
-  margin-left: auto;
-  margin-right: auto;
   background: #f7f7f7;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
   input[type=text] {

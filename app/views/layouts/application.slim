@@ -4,9 +4,11 @@ html
     title To do list application
     = csrf_meta_tags 
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload' 
   head
   body
-    = yield
+    div id="root"
+      h1 Loading...
+      = yield
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'     
   body
 html  
