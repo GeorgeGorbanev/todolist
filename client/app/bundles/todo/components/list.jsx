@@ -14,7 +14,19 @@ export default class List extends React.Component {
       ]
     };
 
-    //this.handleChangeDone = this.handleChangeDone.bind(this);
+    this.handleNewTask = this.handleNewTask.bind(this);
+  }
+
+  handleNewTask(event) {
+    if (event.keyCode == 13) {
+      this.setState({
+        tasks: this.state.tasks.concat(
+          <Task text={event.target.value} done={false}
+                 wrapped={true} creationDate={(new Date).toString()}/>
+       )
+     })
+     event.target.value = "";
+    }
   }
 
   render() {
@@ -25,7 +37,7 @@ export default class List extends React.Component {
         </div>
         <div id="list">
           <div id="new-task">
-            <input type="text" placeholder="What you gonna do?" />
+            <input type="text" placeholder="What you gonna do?" onKeyDown={this.handleNewTask} />
           </div>
           <div id="last-tasks-page">
             <ul>

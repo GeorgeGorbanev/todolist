@@ -62,7 +62,7 @@ export default class Task extends React.Component {
                   <a href="#"> Remove</a>
                   <br />
                   <span className="info"> Done:</span>
-                  <span>{this.state.doneDate}</span>
+                  <span>{this.state.doneDate ? this.state.doneDate : " Soon"}</span>
                   <textarea placeholder="Describe your task..." onChange={this.handleChangeDescription} />
                 </div>
               </div>
