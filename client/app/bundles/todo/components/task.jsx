@@ -48,7 +48,7 @@ export default class Task extends React.Component {
 
   render() {
         return(
-            <li>
+            <div>
               <div className={this.state.done ? "task done" : "task"}>
                 <input type="checkbox" onChange={this.handleChangeDone} checked={this.state.done} />
                 <div className="text-container">
@@ -66,7 +66,7 @@ export default class Task extends React.Component {
                   <textarea placeholder="Describe your task..." onChange={this.handleChangeDescription} />
                 </div>
               </div>
-            </li>
+            </div>
           )
   }
 }
