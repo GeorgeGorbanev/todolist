@@ -14,8 +14,8 @@ export default class List extends React.Component {
           </div>
           <div id="last-tasks-page">
             <ul>
-              <Task text={"Write some tasks"} done={false} wrapped={true} />
-              <Task text={"Visit this page"} done={true} wrapped={true} />
+              <Task text={"Write some tasks"} done={false} wrapped={true} creationDate={(new Date).toString()}/>
+              <Task text={"Visit this page"} done={true} wrapped={true} creationDate={(new Date).toString()}/>
             </ul>
           </div>
         </div>
