@@ -9,6 +9,6 @@ import List from '../components/list';
 //});
 
 ReactDOM.render(
-  <List />,
+  <List done="false" />,
   document.getElementById('root')
 );
