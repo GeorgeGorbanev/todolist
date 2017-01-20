@@ -7,13 +7,19 @@ export default class List extends React.Component {
 
     this.state = {
       tasks: [
-        <Task text={"Write some tasks"} done={false}
-              wrapped={true} creationDate={(new Date).toString()}/>,
-        <Task text={"Visit this page"} done={true}
-              wrapped={true} creationDate={(new Date).toString()}/>
+        {
+          text: "Write some tasks",
+          done: false,
+          creationDate: (new Date).toString()
+        },
+        {
+          text: "Visit this page",
+          done: true,
+          creationDate: (new Date).toString(),
+          doneDate: (new Date).toString()
+        }
       ]
-    };
-
+    }
     this.handleNewTask = this.handleNewTask.bind(this);
   }
 
@@ -21,8 +27,11 @@ export default class List extends React.Component {
     if (event.keyCode == 13) {
       this.setState({
         tasks: this.state.tasks.concat(
-          <Task text={event.target.value} done={false}
-                 wrapped={true} creationDate={(new Date).toString()}/>
+              {
+                text: event.target.value,
+                done: false,
+                creationDate: (new Date).toString()
+              }
        )
      })
      event.target.value = "";
@@ -41,9 +50,15 @@ export default class List extends React.Component {
           </div>
           <div id="last-tasks-page">
             <ul>
-              {this.state.tasks.map(function(task){
-                return <li>{task}</li>;
-               })}
+                { this.state.tasks.map(function(task, key){
+                  key += 1;
+                  return (<li key={key}>
+                          <Task text={task.text}
+                          done={task.done}
+                          creationDate={task.creationDate}
+                          doneDate={task.doneDate}
+                          key={key} />
+                  </li>)})}
             </ul>
           </div>
         </div>

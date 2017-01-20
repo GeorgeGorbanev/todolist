@@ -4,11 +4,7 @@ import ReactDOM from 'react-dom'
 
 import List from '../components/list';
 
-//ReactOnRails.register({
-//  List,
-//});
-
 ReactDOM.render(
-  <List done="false" />,
+  <List />,
   document.getElementById('root')
 );

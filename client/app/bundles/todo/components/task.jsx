@@ -18,13 +18,13 @@ export default class Task extends React.Component {
     this.handleChangeText = this.handleChangeText.bind(this);
     this.handleChangeWrapped = this.handleChangeWrapped.bind(this);
     this.handleChangeDescription = this.handleChangeDescription.bind(this);
+    this.handleRemoveTask = this.handleRemoveTask.bind(this);
   }
-
 
   handleChangeDone() {
     this.setState({
         done: !this.state.done,
-        doneDate: (new Date).toString()
+        doneDate: this.state.done ? " Soon" : (new Date).toString()
     })
   }
 
@@ -46,9 +46,15 @@ export default class Task extends React.Component {
     })
   }
 
+  handleRemoveTask() {
+    this.setState({
+        removed: true
+    })
+  }
+
   render() {
         return(
-            <div>
+            <div style={{display: this.state.removed ? 'none' : 'block'}}>
               <div className={this.state.done ? "task done" : "task"}>
                 <input type="checkbox" onChange={this.handleChangeDone} checked={this.state.done} />
                 <div className="text-container">
@@ -59,10 +65,10 @@ export default class Task extends React.Component {
                 <div className="task-description" style={{display: this.state.wrapped ? 'none' : 'block'}}>
                   <span className="info"> Created: </span>
                   <span>{this.state.creationDate}</span>
-                  <a href="#"> Remove</a>
+                  <a href="#" onClick={this.handleRemoveTask}> Remove</a>
                   <br />
                   <span className="info"> Done:</span>
-                  <span>{this.state.doneDate ? this.state.doneDate : " Soon"}</span>
+                  <span>{this.state.done ? this.state.doneDate : " Soon"}</span>
                   <textarea placeholder="Describe your task..." onChange={this.handleChangeDescription} />
                 </div>
               </div>
