@@ -17,7 +17,7 @@ body {
   font-family: "Helvetica";
 }
 
-#list {
+.list {
   width: 550px;
   background: #f7f7f7;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
@@ -40,22 +40,21 @@ body {
   }
 }
 
-#new-task {
-  input[type=text] {
-    background: #f7f7f7;
-  }
+.new-task {
+  background: #f7f7f7;
 }
 
-#last-tasks-page {
-  ul {
+ul {
     margin: 0;
     padding: 0;
     list-style: none;
-  }
-  .task {
+}
+
+.task {
     width: auto;
     height: auto;
     border: solid 1px #cccccc;
+    box-shadow: none;
     input[type=checkbox] {
       zoom: 1.6;
       float: left;
@@ -100,7 +99,6 @@ body {
         width: 100%;
       }
     }
-  }
 }
 
 .done {
@@ -113,10 +111,6 @@ body {
   background: #fefefe;
 }
 
-#last-tasks-page .task:hover .text-container .arrow {
+.task:hover .text-container .arrow {
   display: block;
-}
-
-#pagination {
-  padding: 2px;
 }
