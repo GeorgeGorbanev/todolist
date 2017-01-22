@@ -44,16 +44,6 @@ export default class ToDoApp extends React.Component {
     }
   }
 
-  // handleRemoveTask(id, event){
-  //   let newState = this.state.tasks.splice(0);
-  //   newState.splice(id, 1);
-  //   this.setState({ tasks: newState})
-  // }
-
-  //handleTasksChange(newTasksState){
-  //  this.setState({ tasks: this.state.tasks = newTasksState} )
-  //}
-
   render() {
     return (
       <div>
