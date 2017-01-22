@@ -13,22 +13,19 @@ export default class List extends React.Component {
     return (
       <div className="list">
             <ul>
-                {this.props.tasks.map(function(task, key){
+                {this.props.tasks.map((task, key)=>{
                     return (
                       <li key={key}>
                         <Task text={task.text}
                               done={task.done}
                               creationDate={task.creationDate}
                               doneDate={task.doneDate}
-                              itemKey={key}
-                              handleRemoveTask={this.props.handleRemoveTask} />
+                              removed={task.removed} />
                       </li>
-                    )
-                  }, this
-                 )
+                    )}, this)
                 }
             </ul>
       </div>
-    );
+    )
   }
 }

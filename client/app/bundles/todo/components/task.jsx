@@ -11,13 +11,15 @@ export default class Task extends React.Component {
       wrapped: true,
       creationDate: this.props.creationDate,
       doneDate: this.props.doneDate,
-      description: this.props.description
+      description: this.props.description,
+      removed: false
     };
 
     this.handleChangeDone = this.handleChangeDone.bind(this);
     this.handleChangeText = this.handleChangeText.bind(this);
     this.handleChangeWrapped = this.handleChangeWrapped.bind(this);
     this.handleChangeDescription = this.handleChangeDescription.bind(this);
+    this.handleRemoveTask = this.handleRemoveTask.bind(this);
   }
 
   handleChangeDone() {
@@ -45,9 +47,16 @@ export default class Task extends React.Component {
     })
   }
 
+  handleRemoveTask(){
+    this.setState({
+        removed: true
+    })
+  }
+
   render() {
         return(
-              <div className={this.state.done ? "list task done" : "list task"}>
+              <div className={this.state.done ? "list task done" : "list task"}
+                   style={{display: this.state.removed ? 'none' : 'block' }}> 
                 <input type="checkbox" onChange={this.handleChangeDone} checked={this.state.done} />
                 <div className="text-container">
                   <input type="text" value={this.state.text} onChange={this.handleChangeText} />
@@ -58,7 +67,7 @@ export default class Task extends React.Component {
                   <span className="info"> Created: </span>
                   <span>{this.state.creationDate}</span>
                   <br />
-                  <a href="#" onClick={this.props.handleRemoveTask(this.props.itemKey)}>Remove</a>
+                  <a href="#" onClick={this.handleRemoveTask}>Remove</a>
                   <span className="info"> Done:</span>
                   <span>{this.state.done ? this.state.doneDate : " Soon"}</span>
                   <textarea placeholder="Describe your task..." onChange={this.handleChangeDescription} />
