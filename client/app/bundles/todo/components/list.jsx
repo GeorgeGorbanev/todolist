@@ -16,11 +16,16 @@ export default class List extends React.Component {
                 {this.props.tasks.map((task, key)=>{
                     return (
                       <li key={key}>
-                        <Task text={task.text}
+                        <Task itemKey={key}
+                              text={task.text}
                               done={task.done}
                               creationDate={task.creationDate}
                               doneDate={task.doneDate}
-                              removed={task.removed} />
+                              removed={task.removed}
+                              handleRemoveTask={this.props.handleRemoveTask}
+                              handleChangeDone={this.props.handleChangeDone}
+                              handleChangeText={this.props.handleChangeText}
+                              handleChangeDescription={this.props.handleChangeDescription}/>
                       </li>
                     )}, this)
                 }

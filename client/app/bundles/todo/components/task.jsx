@@ -12,7 +12,7 @@ export default class Task extends React.Component {
       creationDate: this.props.creationDate,
       doneDate: this.props.doneDate,
       description: this.props.description,
-      removed: false
+      removed: this.props.removed
     };
 
     this.handleChangeDone = this.handleChangeDone.bind(this);
@@ -55,22 +55,20 @@ export default class Task extends React.Component {
 
   render() {
         return(
-              <div className={this.state.done ? "list task done" : "list task"}
-                   style={{display: this.state.removed ? 'none' : 'block' }}> 
-                <input type="checkbox" onChange={this.handleChangeDone} checked={this.state.done} />
+              <div className={this.state.done ? "list task done" : "list task"} style={{display: this.state.removed ? 'none' : 'block' }}>
+                <input type="checkbox" onChange={this.props.handleChangeDone.bind(this, this)} checked={this.state.done} />
                 <div className="text-container">
-                  <input type="text" value={this.state.text} onChange={this.handleChangeText} />
-                  <img src={this.state.wrapped ? "/ardwn.svg" : "/arup.svg"}
-                       className="arrow" onClick={this.handleChangeWrapped} />
+                  <input type="text" value={this.state.text} onChange={this.props.handleChangeText.bind(this, this)} />
+                  <img src={this.state.wrapped ? "/ardwn.svg" : "/arup.svg"} className="arrow" onClick={this.handleChangeWrapped} />
                 </div>
                 <div className="task-description" style={{display: this.state.wrapped ? 'none' : 'block'}}>
                   <span className="info"> Created: </span>
                   <span>{this.state.creationDate}</span>
                   <br />
-                  <a href="#" onClick={this.handleRemoveTask}>Remove</a>
+                  <a href="#" onClick={this.props.handleRemoveTask.bind(this, this)}>Remove</a>
                   <span className="info"> Done:</span>
                   <span>{this.state.done ? this.state.doneDate : " Soon"}</span>
-                  <textarea placeholder="Describe your task..." onChange={this.handleChangeDescription} />
+                  <textarea placeholder="Describe your task..." onChange={this.props.handleChangeDescription.bind(this, this)} />
                 </div>
               </div>
         )

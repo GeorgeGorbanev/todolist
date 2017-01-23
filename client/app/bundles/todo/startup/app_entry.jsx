@@ -26,7 +26,12 @@ export default class ToDoApp extends React.Component {
         }
       ]
     }
-    this.handleNewTask = this.handleNewTask.bind(this);
+    this.handleNewTask    = this.handleNewTask.bind(this);
+
+    this.handleRemoveTask = this.handleRemoveTask.bind(this);
+    this.handleChangeDone = this.handleChangeDone.bind(this);
+    this.handleChangeText = this.handleChangeText.bind(this);
+    this.handleChangeDescription = this.handleChangeDescription.bind(this);
   }
 
   handleNewTask(event) {
@@ -44,12 +49,53 @@ export default class ToDoApp extends React.Component {
     }
   }
 
+  handleRemoveTask(task){
+    let newState = this.state.tasks.splice(0);
+    newState[task.props.itemKey]["removed"] = true;
+    this.setState({
+        tasks: newState
+    })
+    task.handleRemoveTask();
+  }
+
+  handleChangeDone(task){
+    let newState = this.state.tasks.splice(0);
+    newState[task.props.itemKey]["done"] = !newState[task.props.itemKey]["done"];
+    newState[task.props.itemKey]["doneDate"] = newState[task.props.itemKey]["done"] ? (new Date).toString() : " Soon";
+    this.setState({
+        tasks: newState
+    })
+    task.handleChangeDone();
+  }
+
+  handleChangeText(task, e){
+     let newState = this.state.tasks.splice(0);
+     newState[task.props.itemKey]["text"] = e.target.value;
+     this.setState({
+         tasks: newState
+     })
+    task.handleChangeText(e);
+  }
+
+  handleChangeDescription(task, e){
+     let newState = this.state.tasks.splice(0);
+     newState[task.props.itemKey]["description"] = e.target.value;
+     this.setState({
+         tasks: newState
+     })
+    task.handleChangeDescription(e);
+  }
+
   render() {
     return (
       <div>
         <Header />
         <NewTaskForm handleNewTask={this.handleNewTask} />
-        <List tasks={this.state.tasks} />
+        <List tasks={this.state.tasks}
+              handleRemoveTask={this.handleRemoveTask}
+              handleChangeDone={this.handleChangeDone}
+              handleChangeText={this.handleChangeText}
+              handleChangeDescription={this.handleChangeDescription} />
       </div>
     )
   }
