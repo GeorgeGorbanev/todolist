@@ -11,21 +11,26 @@ import Task from '../components/task'
 export default class ToDoApp extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      tasks: [
-        {
-          text: "Visit this page",
-          done: true,
-          creationDate: (new Date).toString(),
-          doneDate: (new Date).toString()
-        },
-        {
-          text: "Write some tasks",
-          done: false,
-          creationDate: (new Date).toString()
-        }
-      ]
-    }
+    if (!window.localStorage.tasks)
+      this.state = {
+        tasks: [
+          {
+            text: "Visit this page",
+            done: true,
+            creationDate: (new Date).toString(),
+            doneDate: (new Date).toString()
+          },
+          {
+            text: "Write some tasks",
+            done: false,
+            creationDate: (new Date).toString()
+          }
+        ]
+      }
+    else
+      this.state ={
+         tasks: localStorage.tasks ? JSON.parse(localStorage.tasks) : []
+      }
     this.handleNewTask    = this.handleNewTask.bind(this);
 
     this.handleRemoveTask = this.handleRemoveTask.bind(this);
@@ -87,6 +92,7 @@ export default class ToDoApp extends React.Component {
   }
 
   render() {
+    localStorage.tasks = JSON.stringify(this.state.tasks);
     return (
       <div>
         <Header />

@@ -21,6 +21,7 @@ export default class List extends React.Component {
                               done={task.done}
                               creationDate={task.creationDate}
                               doneDate={task.doneDate}
+                              description={task.description}
                               removed={task.removed}
                               handleRemoveTask={this.props.handleRemoveTask}
                               handleChangeDone={this.props.handleChangeDone}
