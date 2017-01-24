@@ -8,8 +8,9 @@ export default class NewTaskForm extends React.Component {
   render(){
     return(
       <div className="list new-task">
-        <input type="text" placeholder="What you gonna do?"
-               className="new-task" onKeyDown={this.props.handleNewTask.bind(this)} />
+        <form id="new-task">
+          <input type="text" placeholder="What you gonna do?" onKeyDown={this.props.handleNewTask.bind(this)} name="new-task-text" />
+        </form>
       </div>
     )
   }
