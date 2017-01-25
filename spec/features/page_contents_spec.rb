@@ -18,4 +18,10 @@ describe 'Home page', js: true do
     expect(page).to have_selector 'input[value="Visit this page"]'
     expect(page).to have_selector 'input[value="Write some tasks"]'
   end
+
+  it 'should expand task description when click on arrow' do
+    first("li").click
+    find("img").click
+    expect(page).to have_selector '.task-description'
+  end
 end
