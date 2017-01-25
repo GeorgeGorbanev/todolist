@@ -20,6 +20,7 @@ body {
 .list {
   width: 550px;
   background: #f7f7f7;
+  z-index: 500;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
   input[type=text] {
     width: 100%;
@@ -31,12 +32,11 @@ body {
     font-size: 20px;
     color: #666666;
     padding-right: 30px;
+    box-shadow: none;
   }
   input[type=text]:focus {
     background-color: #fcfcfc;
-    box-shadow: 0 0 10px rgba(50,50,50,0.5);
     border: none;
-    box-shadow: none;
   }
 }
 
@@ -113,4 +113,34 @@ ul {
 
 .task:hover .text-container .arrow {
   display: block;
+}
+
+.summary {
+  background: #eeeeee;
+  width: 100%;
+  box-sizing: border-box;
+  height: 22px;
+  border: 1px solid #AAAAAA;
+  border-top: none;
+  color: #656565;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  z-index: 100;
+  span {
+    display: inline-block;
+    height: 100%;
+    font-family: "Helvetica";
+    font-size: 14px;
+    margin-right: 8px;
+    padding: 0;
+  }
+  .summary-done, .summary-todo {
+    float: right;
+  }
+  .actions {
+    float: left;
+    a {
+      color: #666666;
+      margin-left: 8px;
+    }
+  }
 }

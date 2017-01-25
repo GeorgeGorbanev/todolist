@@ -1,20 +1,12 @@
 
 describe 'Home page', js: true do
-  before(:each) do
-    visit '/'
-  end
+  before (:each) { visit '/' }
 
-  it 'should contents "Todor" header' do
-    within 'h1' do
-      expect(page).to have_content 'Todor'
-    end
-  end
+  it('should content "Todor" header') { within('h1') { expect(page).to have_content 'Todor' } }
 
-  it 'should contents input for new task ' do
-    expect(page).to have_selector 'input[placeholder="What you gonna do?"]'
-  end
+  it('should content input for new task') { expect(page).to have_selector 'input[placeholder="What you gonna do?"]' }
 
-  it 'should contents demo tasks ' do
+  it 'should content demo tasks ' do
     expect(page).to have_selector 'input[value="Visit this page"]'
     expect(page).to have_selector 'input[value="Write some tasks"]'
   end
@@ -24,4 +16,16 @@ describe 'Home page', js: true do
     find("img").click
     expect(page).to have_selector '.task-description'
   end
+
+  it 'should content number of done tasks' do
+    done_number = all('.done').count
+    expect(page).to have_content("Done: " + done_number.to_s)
+  end
+
+  it 'should content number of incomplete tasks' do
+    tasks_number = all('.task').count
+    done_number  = all('.done').count
+    expect(page).to have_content("Incompleted: " + (tasks_number - done_number).to_s)
+  end
+
 end

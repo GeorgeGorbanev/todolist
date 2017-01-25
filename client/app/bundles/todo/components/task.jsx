@@ -59,13 +59,13 @@ export default class Task extends React.Component {
                 <input type="checkbox" onChange={this.props.handleChangeDone.bind(this, this)} checked={this.state.done} />
                 <div className="text-container">
                   <input type="text" value={this.state.text} onChange={this.props.handleChangeText.bind(this, this)} />
-                  <img src={this.state.wrapped ? "/ardwn.svg" : "/arup.svg"} alt={this.state.wrapped ? "unwrap" : "wrap"} className="arrow" onClick={this.handleChangeWrapped} />
+                  <img src={this.state.wrapped ? "/ardwn.svg" : "/arup.svg"} alt={this.state.wrapped ? "V" : "^"} className="arrow" onClick={this.handleChangeWrapped} />
                 </div>
                 <div className="task-description" style={{display: this.state.wrapped ? 'none' : 'block'}}>
                   <span className="info"> Created: </span>
                   <span className="creation-date">{this.state.creationDate}</span>
                   <br />
-                  <a href="#" onClick={this.props.handleRemoveTask.bind(this, this)}>Remove</a>
+                  <a href="#" className="remove-task" onClick={this.props.handleRemoveTask.bind(this, this)}>Remove</a>
                   <span className="info"> Done:</span>
                   <span className="done-date">{this.state.done ? this.state.doneDate : " Soon"}</span>
                   <textarea placeholder="Describe your task..." onChange={this.props.handleChangeDescription.bind(this, this)} value={this.state.description ? this.state.description : "" } />
