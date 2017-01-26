@@ -12,8 +12,9 @@ import Summary from '../components/summary'
 export default class ToDoApp extends React.Component {
   constructor(props) {
     super(props);
-    if (window.localStorage.length != 4)
+    if (window.localStorage.length != 5)
       this.state = {
+        reverseOrder: false,
         tasks: [
           {
             text: "Visit this page",
@@ -36,7 +37,8 @@ export default class ToDoApp extends React.Component {
          tasks: window.localStorage.tasks ? JSON.parse(window.localStorage.tasks) : [],
          activeTasksCount: JSON.parse(localStorage.activeTasksCount),
          doneCount: JSON.parse(localStorage.doneCount),
-         todoCount: JSON.parse(localStorage.todoCount)
+         todoCount: JSON.parse(localStorage.todoCount),
+         reverseOrder: JSON.parse(localStorage.reverseOrder)
       }
     this.handleNewTask = this.handleNewTask.bind(this);
 
@@ -46,6 +48,8 @@ export default class ToDoApp extends React.Component {
     this.handleChangeDescription = this.handleChangeDescription.bind(this);
 
     this.handleAllDone = this.handleAllDone.bind(this);
+    this.handleRemoveDone = this.handleRemoveDone.bind(this);
+    this.handleReverse = this.handleReverse.bind(this);
   }
 
   handleNewTask(event) {
@@ -122,21 +126,50 @@ export default class ToDoApp extends React.Component {
     })
   }
 
+  handleRemoveDone(){
+    let newTasks     = this.state.tasks.map((task)=>{
+      if (task.done == true){
+        task.removed = true;
+        return task;
+      }
+      else
+        return task;
+    });
+    this.setState({
+      tasks: newTasks,
+      activeTasksCount: this.state.activeTasksCount - this.state.doneCount,
+      doneCount: 0
+    })
+  }
+
+  handleReverse(){
+    this.setState({
+      reverseOrder: !this.state.reverseOrder
+    })
+  }
+
   render() {
     localStorage.tasks = JSON.stringify(this.state.tasks);
     localStorage.activeTasksCount = JSON.stringify(this.state.activeTasksCount);
     localStorage.doneCount = JSON.stringify(this.state.doneCount);
     localStorage.todoCount = JSON.stringify(this.state.todoCount);
+    localStorage.reverseOrder = JSON.stringify(this.state.reverseOrder);
     return (
       <div>
         <Header />
         <NewTaskForm handleNewTask={this.handleNewTask} />
-        <List tasks={this.state.tasks}
-              handleRemoveTask={this.handleRemoveTask}
-              handleChangeDone={this.handleChangeDone}
-              handleChangeText={this.handleChangeText}
-              handleChangeDescription={this.handleChangeDescription} />
-        <Summary todoCount={this.state.todoCount} doneCount={this.state.doneCount} handleAllDone={this.handleAllDone.bind(this)}/>
+        <List    tasks={this.state.tasks}
+                 reverseOrder={this.state.reverseOrder}
+                 handleRemoveTask={this.handleRemoveTask}
+                 handleChangeDone={this.handleChangeDone}
+                 handleChangeText={this.handleChangeText}
+                 handleChangeDescription={this.handleChangeDescription} />
+        <Summary activeTasksCount={this.state.activeTasksCount}
+                 todoCount={this.state.todoCount}
+                 doneCount={this.state.doneCount}
+                 handleAllDone={this.handleAllDone.bind(this)}
+                 handleRemoveDone={this.handleRemoveDone.bind(this)}
+                 handleReverse={this.handleReverse.bind(this)}/>
       </div>
     )
   }

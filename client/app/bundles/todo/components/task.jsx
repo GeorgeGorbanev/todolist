@@ -47,7 +47,7 @@ export default class Task extends React.Component {
                   <span className="info"> Created: </span>
                   <span className="creation-date">{this.state.creationDate}</span>
                   <br />
-                  <a href="#" className="remove-task" onClick={this.props.handleRemoveTask.bind(this, this)}>Remove</a>
+                  <a href="" className="remove-task" onClick={this.props.handleRemoveTask.bind(this, this)}>Remove</a>
                   <span className="info"> Done:</span>
                   <span className="done-date">{this.state.done ? this.state.doneDate : " Soon"}</span>
                   <textarea placeholder="Describe your task..." onChange={this.props.handleChangeDescription.bind(this, this)} value={this.state.description ? this.state.description : "" } />
