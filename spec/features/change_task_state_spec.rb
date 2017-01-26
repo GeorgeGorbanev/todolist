@@ -56,3 +56,21 @@ describe 'Task', js: true do
     expect(page).not_to have_selector('input[value="Task to remove"]', visible: true)
   end
 end
+
+
+describe 'On summary panel', js: true do
+
+  before (:each) { visit '/' }
+
+  it 'click on "All done" should mark all tasks done' do
+    find('a', text: 'All done').click
+    expect(all('.task').count).to eql all('.done').count
+  end
+
+  it 'click on "Remove done" should remove all marked tasks' do
+    find('li:nth-child(1) input[type=checkbox]').click
+    find('li:nth-child(2) input[type=checkbox]').click
+    find('a', text: 'Remove done').click
+    expect(all('.task').count).to eql 2
+  end
+end

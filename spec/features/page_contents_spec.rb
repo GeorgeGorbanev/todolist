@@ -22,10 +22,10 @@ describe 'Home page', js: true do
     expect(page).to have_content("Done: " + done_number.to_s)
   end
 
-  it 'should content number of incomplete tasks' do
+  it 'should content number of todo tasks' do
     tasks_number = all('.task').count
     done_number  = all('.done').count
-    expect(page).to have_content("Incompleted: " + (tasks_number - done_number).to_s)
+    expect(page).to have_content("Todo: " + (tasks_number - done_number).to_s)
   end
 
 end
