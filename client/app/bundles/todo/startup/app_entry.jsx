@@ -12,8 +12,7 @@ import Summary from '../components/summary'
 export default class ToDoApp extends React.Component {
   constructor(props) {
     super(props);
-    if (window.localStorage.length == 0){
-      console.log(window.localStorage);
+    if (window.localStorage.length != 4)
       this.state = {
         tasks: [
           {
@@ -32,7 +31,6 @@ export default class ToDoApp extends React.Component {
         doneCount: 1,
         todoCount: 1
       }
-    }
     else
       this.state ={
          tasks: window.localStorage.tasks ? JSON.parse(window.localStorage.tasks) : [],
@@ -40,12 +38,14 @@ export default class ToDoApp extends React.Component {
          doneCount: JSON.parse(localStorage.doneCount),
          todoCount: JSON.parse(localStorage.todoCount)
       }
-    this.handleNewTask    = this.handleNewTask.bind(this);
+    this.handleNewTask = this.handleNewTask.bind(this);
 
-    this.handleRemoveTask = this.handleRemoveTask.bind(this);
-    this.handleChangeDone = this.handleChangeDone.bind(this);
-    this.handleChangeText = this.handleChangeText.bind(this);
+    this.handleRemoveTask        = this.handleRemoveTask.bind(this);
+    this.handleChangeDone        = this.handleChangeDone.bind(this);
+    this.handleChangeText        = this.handleChangeText.bind(this);
     this.handleChangeDescription = this.handleChangeDescription.bind(this);
+
+    this.handleAllDone = this.handleAllDone.bind(this);
   }
 
   handleNewTask(event) {
@@ -71,10 +71,9 @@ export default class ToDoApp extends React.Component {
     this.setState({
         tasks: newState,
         activeTasksCount: this.state.activeTasksCount - 1,
-        todoCount: newState[task.props.itemKey]["done"] ? this.state.todoCount - 1 : this.state.todoCount + 1,
-        doneCount: newState[task.props.itemKey]["done"] ? this.state.doneCount + 1 : this.state.todoCount - 1
+        todoCount: newState[task.props.itemKey]["done"] ? this.state.todoCount : this.state.todoCount - 1,
+        doneCount: newState[task.props.itemKey]["done"] ? this.state.doneCount - 1 : this.state.doneCount
     })
-    task.handleRemoveTask();
   }
 
   handleChangeDone(task){
@@ -84,9 +83,8 @@ export default class ToDoApp extends React.Component {
     this.setState({
         tasks: newState,
         todoCount: newState[task.props.itemKey]["done"] ? this.state.todoCount - 1 : this.state.todoCount + 1,
-        doneCount: newState[task.props.itemKey]["done"] ? this.state.doneCount + 1 : this.state.todoCount - 1
+        doneCount: newState[task.props.itemKey]["done"] ? this.state.doneCount + 1 : this.state.doneCount - 1
     })
-    task.handleChangeDone();
   }
 
   handleChangeText(task, e){
@@ -95,7 +93,6 @@ export default class ToDoApp extends React.Component {
      this.setState({
          tasks: newState
      })
-    task.handleChangeText(e);
   }
 
   handleChangeDescription(task, e){
@@ -104,7 +101,25 @@ export default class ToDoApp extends React.Component {
      this.setState({
          tasks: newState
      })
-    task.handleChangeDescription(e);
+  }
+
+  handleAllDone(){
+    let newDoneCount = this.state.doneCount;
+    let newTasks     = this.state.tasks.map((task)=>{
+      if (task.done == true)
+        return task;
+      else{
+        task.done = true;
+        task.doneDate = (new Date).toString();
+        newDoneCount += 1;
+        return task;
+      }
+    });
+    this.setState({
+      tasks: newTasks,
+      doneCount: newDoneCount,
+      todoCount: 0
+    })
   }
 
   render() {
@@ -121,7 +136,7 @@ export default class ToDoApp extends React.Component {
               handleChangeDone={this.handleChangeDone}
               handleChangeText={this.handleChangeText}
               handleChangeDescription={this.handleChangeDescription} />
-        <Summary todoCount={this.todoCount} doneCount={this.state.doneCount} />
+        <Summary todoCount={this.state.todoCount} doneCount={this.state.doneCount} handleAllDone={this.handleAllDone.bind(this)}/>
       </div>
     )
   }

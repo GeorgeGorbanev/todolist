@@ -15,41 +15,23 @@ export default class Task extends React.Component {
       removed: this.props.removed
     };
 
-    this.handleChangeDone = this.handleChangeDone.bind(this);
-    this.handleChangeText = this.handleChangeText.bind(this);
     this.handleChangeWrapped = this.handleChangeWrapped.bind(this);
-    this.handleChangeDescription = this.handleChangeDescription.bind(this);
-    this.handleRemoveTask = this.handleRemoveTask.bind(this);
   }
 
-  handleChangeDone() {
+  componentWillReceiveProps(nextProps) {
     this.setState({
-        done: !this.state.done,
-        doneDate: this.state.done ? " Soon" : (new Date).toString()
-    })
-  }
-
-  handleChangeText(event) {
-    this.setState({
-        text: event.target.value
-    })
+      done: nextProps.done,
+      text: nextProps.text,
+      creationDate: nextProps.creationDate,
+      doneDate: nextProps.doneDate,
+      description: nextProps.description,
+      removed: nextProps.removed
+    });
   }
 
   handleChangeWrapped() {
     this.setState({
         wrapped: !this.state.wrapped
-    })
-  }
-
-  handleChangeDescription(event) {
-    this.setState({
-        description: event.target.value
-    })
-  }
-
-  handleRemoveTask(){
-    this.setState({
-        removed: true
     })
   }
 
