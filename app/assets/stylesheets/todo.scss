@@ -18,6 +18,7 @@ body {
 }
 
 .list {
+  clear: both;
   width: 550px;
   background: #f7f7f7;
   z-index: 500;
@@ -143,4 +144,30 @@ ul {
       margin-left: 8px;
     }
   }
+}
+
+#user{
+  float: right;
+  width: auto;
+  height: 20px;
+  padding: 3px 5px;
+  background: #f7f7f7;
+  border: 1px solid #aaaaaa;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  img {
+    width: 18px;
+    vertical-align: middle;
+    margin-right: 3px;
+    padding-left: 0;
+    margin-left: 0;
+  }
+  a {
+    padding: 3px 5px;
+    text-decoration: none;
+    color: #666666;
+  }
+
+}
+#user:hover {
+  background: #ffffff;
 }

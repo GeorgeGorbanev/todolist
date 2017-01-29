@@ -12,9 +12,13 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jbuilder', '~> 2.5'
 
 gem 'mongoid', '6.0.0'
-gem "react_on_rails", "~> 6"
+gem 'react_on_rails', '~> 6'
 gem 'slim', '3.0.7'
 
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'twitter'
 
 group :development, :test do
   gem 'byebug', platform: :mri

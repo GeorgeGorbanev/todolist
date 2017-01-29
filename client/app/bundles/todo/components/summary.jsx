@@ -8,9 +8,9 @@ export default class Summary extends React.Component {
 
   render() {
         return(
-              <div className="summary" style={ {display: (this.props.activeTasksCount == 0) ? 'none' : 'block' }}>
+              <div className="summary" style={ {display: (this.props.activeTasksCount <= 0) ? 'none' : 'block' }}>
                 <span className="actions">
-                  <a href="#" onClick={this.props.handleReverse}>Reverse order</a>
+
                   <a href="#" onClick={this.props.handleRemoveDone}>Remove done</a>
                   <a href="#" onClick={this.props.handleAllDone}>All done</a>
                 </span>
@@ -20,3 +20,4 @@ export default class Summary extends React.Component {
         )
   }
 }
+//<a href="#" onClick={this.props.handleReverse}>Reverse order</a>

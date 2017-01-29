@@ -7,7 +7,7 @@ import NewTaskForm from '../components/new_task_form'
 import List from '../components/list'
 import Task from '../components/task'
 import Summary from '../components/summary'
-
+import Auth from '../components/auth'
 
 export default class ToDoApp extends React.Component {
   constructor(props) {
@@ -157,6 +157,7 @@ export default class ToDoApp extends React.Component {
     return (
       <div>
         <Header />
+        <Auth />
         <NewTaskForm handleNewTask={this.handleNewTask} />
         <List    tasks={this.state.tasks}
                  reverseOrder={this.state.reverseOrder}
