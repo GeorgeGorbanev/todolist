@@ -1,26 +1,29 @@
 # TODOLIST
 
-Простое приложение со списком дел.
+Classic list of tasks application.
 
-Особенности:
+Inspired by todomvc.com 
 
-* Авторизация через социальные сети;
-* Хранение данных в Mongo;
-* Интерфейс на React.
+## Features
 
+* Creating tasks;
+* Mark tasks: todo/done;
+* Auto-store date of creating and mark;
+* Description of tasks;
+* Summary with count of every type of tasks;
+* Removing: one or all done;
+* Save between sessions on browser localstorage.
 
-Авторизация:
+## Main technologies
 
-* Данные неавторизованного пользователя сохраняются в куки;
-* При авторизации сохраняются в базу данных.
+* Ruby on Rails (redundantly);
+* React-JS;
+* MongoDB.
 
-Пользовательские таски:
+## Status
 
-* Состоят из:
-    1) Короткой строки,(100 символов);
-    2) Состояния(Выполнено или нет);
-    3) Даты создания и выполнения;
-    4) Подробного описания(1000 символов).
-    
-* Могут быть отсортированы по дате;
-* Позволяют пользователю модифицировать порядок.   
+TODO:
+
+* OAuth;
+* MongoDB store;
+* Deploy.
